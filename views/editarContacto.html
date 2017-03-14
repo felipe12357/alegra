@@ -1,0 +1,72 @@
+
+<div ng-controller="EditarController">
+
+	<div class="row">
+	 	<div class="col-xs-10 col-xs-offset-1 backgroundTitulo">
+	 		<div class="row">
+	 			<div class="hidden-xs col-sm-1">
+	 				<i class="fa fa-pencil-square-o fa-lg" aria-hidden="true"></i> 
+	 			</div>
+	 			<div class="col-xs-12 col-sm-9">Editar Contacto</div>
+	 		</div>
+	 	</div>
+	</div>
+	<div class="row margen">
+	<form name='editarContactoForm' novalidate>
+		<div class="col-xs-10 col-xs-offset-1  contenedor">
+	 		<div class="row margen">
+				<div class="col-xs-12 col-sm-2 labelF"  ng-class="{'has-error':editarContactoForm.name.$invalid}">Nombre (*)</div>
+				<div class="col-xs-12 col-sm-4"><input type="text"  name="name" ng-model="contacto.name" class="form-control input-sm" required></div>
+				<div class="col-xs-12 col-sm-2 labelF">Nit</div>
+				<div class="col-xs-12 col-sm-4"><input type="text" ng-model="contacto.identification" class="form-control input-sm" ></div>
+			</div>
+			<div class="row margen">
+				<div class="col-xs-12 col-sm-2 labelF">Dirección</div>
+				<div class="col-xs-12 col-sm-4"><input type="text" ng-model="contacto.address.address" class="form-control input-sm" ></div>
+				<div class="col-xs-12 col-sm-2 labelF">Ciudad</div>
+				<div class="col-xs-12 col-sm-4"><input type="text" ng-model="contacto.address.city" class="form-control input-sm" ></div>
+			</div>
+			<div class="row margen">
+				<div class="col-xs-12 col-sm-2 labelF">Correo Electrónico</div>
+				<div class="col-xs-12 col-sm-4"><input type="email" ng-model="contacto.email" class="form-control input-sm" ></div>
+				<div class="col-xs-12 col-sm-2 labelF">Celular</div>
+				<div class="col-xs-12 col-sm-4"><input type="text" ng-model="contacto.mobile" class="form-control input-sm" ></div>
+			</div>
+
+			<div class="row margen">
+				<div class="col-xs-12 col-sm-2 labelF">Teléfono 1</div>
+				<div class="col-xs-12 col-sm-4"><input type="text" ng-model="contacto.phonePrimary" class="form-control input-sm" ></div>
+				<div class="col-xs-12 col-sm-2 labelF">Teléfono 2</div>
+				<div class="col-xs-12 col-sm-4"><input type="text" ng-model="contacto.phoneSecondary" class="form-control input-sm" ></div>
+			</div>
+
+
+			<div class="row margen">
+				<div class="col-xs-12 col-sm-2 labelF">Lista de Precios</div>
+				<div class="col-xs-12 col-sm-4">
+					<select ng-model="contacto.priceList" ng-options="lista as lista.nombre for lista in ListaPrecios track by lista.id" class="form-control input-sm">
+				        <option value="">--Elige opcion--</option>
+				    </select>
+				</div>
+				<div class="col-xs-12 col-sm-4 col-sm-offset-2  ">
+					<p class="checkbox-inline labelF"><input type="checkbox" ng-model="contacto.type.client">Cliente </p>
+					<p class="checkbox-inline labelF"><input type="checkbox" ng-model="contacto.type.provider">Proveedor </p>
+				</div>
+			</div>
+
+			<div class="row margen">
+				<div class="col-xs-12 col-sm-2 labelF">Observaciones</div>
+				<div class="col-xs-12 col-sm-4"><textarea ng-model="contacto.observations" class="form-control input-sm"  rows="5"></textarea></div>
+			</div>
+
+			<div class="row margen">
+				<div class="col-xs-12 col-sm-4 col-sm-offset-7 col-md-3 col-md-offset-8">
+					<button class="btn btn-default btn-sm" ng-click="regresar()"><i class="fa fa-ban fa-lg"></i> Cancelar</button>
+				 	<button class="btn btn-success btn-sm buttonSuccess" ng-click="editarContacto()"><i class="fa fa-floppy-o fa-lg"></i> Guardar</button><br><br>
+				</div>
+			</div>
+		</div>
+	</form>
+	</div>
+
+</div>

@@ -1,0 +1,68 @@
+		.primaryColor{
+			color:#00b19c;
+			cursor:pointer;
+		}
+
+		.deleteColor{
+			color:#EA5E42;
+			cursor:pointer;
+		}
+
+		.tituloColor{
+			color:#005376;
+			cursor:pointer;
+		}
+
+		.margen{
+			padding-top: .5em;
+		}
+
+		.buttonSuccess{
+			background-color: #005376;
+			border-color:#005376;
+		}
+		.buttonSuccess:hover {
+		    background-color: #00b19c;
+		}
+		.buttonSuccess:active {
+		    background-color: #00b19c;
+		}
+
+
+		.buttonPrimary{
+			background-color:#00b19c;
+			border-color:#00b19c;
+		}
+		.buttonPrimary:hover {
+		    background-color: #00b19c;
+		}
+		.buttonPrimary:active {
+		    background-color: #00b19c;
+		}
+
+		.backgroundTitulo{
+			background-color:#f3f3f3;
+			color:#005376;
+			font-weight: bold;
+			font-size: 1.5em;
+			border-radius: 5px;
+			padding-top: .3em;
+			padding-bottom: .3em;
+			border-width: 2px;
+			border-color:#005376;
+			border-style: solid; 
+		}
+		.labelF{
+			font-size:1em;
+			font-weight: bold;
+		}
+
+		.contenedor{
+			border-width: 2px;
+			border-color:#00b19c;
+			border-radius: 5px;
+			 border-style: solid; 
+		}
+input.ng-invalid {
+    border-color: #a94442;
+}

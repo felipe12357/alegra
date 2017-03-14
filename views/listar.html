@@ -1,0 +1,53 @@
+ 
+<div ng-controller="TablaController">
+
+	 <div class="row">
+	 	<div class="col-xs-10 col-xs-offset-1 backgroundTitulo">
+	 		
+	 		<!--<a href="#crearContacto" class="btn btn-success btn-sm buttonSuccess" ><i class="fa fa-plus fa-lg"></i> Nuevo Contacto2</a> -->
+	 		<div class="row">
+	 			<div class="hidden-xs col-sm-1">
+	 				<i class="fa fa-list-alt fa-lg" aria-hidden="true"></i> 
+	 			</div>
+	 			<div class="col-xs-12 col-sm-8" >Contactos</div>
+	 			<div class="col-xs-12 col-sm-2">
+	 				<button class="btn btn-success btn-sm buttonSuccess" ng-click="CrearContacto()"><i class="fa fa-plus fa-lg"></i> Nuevo Contacto</button>
+	 			</div>
+	 									
+	 		</div>
+	 	</div>
+	 </div>
+
+	<div class="row margen">
+		<div class="col-xs-10 col-xs-offset-1 contenedor">
+			<div class="table-responsive">
+				<table class="table">
+					<tr>
+						<td><input type="text" ng-model="filtro.nombre" class="form-control input-sm" placeholder="filtrar por nombre" ng-show="filtrar"></td>
+						<td><input type="text" ng-model="filtro.nit" class="form-control input-sm" placeholder="filtrar por nit" ng-show="filtrar"></td>
+						<td><input type="text" ng-model="filtro.telefono" class="form-control input-sm" placeholder="filtrar por telefono" ng-show="filtrar"></td>
+						<td></td>
+						<td><button class="btn btn-success btn-sm buttonPrimary" ng-click="Filtrar()"><i class="fa fa-filter" aria-hidden="true"></i> filtrar</button></td>
+					</tr>
+					<tr class="tituloColor">
+					<th ng-click="OrdenarTabla('name')">Nombres</th><th ng-click="OrdenarTabla('identification')">Nit</th>
+						<th ng-click="OrdenarTabla('phonePrimary')">Teléfono 1</th><th ng-click="OrdenarTabla('observations')">Observaciones</th><th>Acciones</th></tr>
+					<tr ng-repeat = "contac in contactos | orderBy : orden:reverse | filter:{name:filtro.nombre, identification:filtro.nit, phonePrimary:filtro.telefono, } "
+						ng-if="$index>=pagInicial && $index<=pagFin">
+						<td>{{contac.name}}</td><td>{{contac.identification}}</td><td>{{contac.phonePrimary}}</td><td>{{contac.observations}}</td><td>
+						<i class="fa fa-eye fa-lg primaryColor" ng-click="DetallesContacto(contac.id)"></i> <i class="fa fa-pencil fa-lg primaryColor" ng-click="EditarContacto(contac.id)"></i> <i class="fa fa-remove fa-lg deleteColor" ng-click="EliminarContacto(contac.id)"></i></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+		
+	</div>
+ 	<div class="row margen">
+ 		<div class="col-xs-10 col-xs-offset-1">
+			<div class='btn-group'>
+          		<button type='button' class='btn btn-default' ng-disabled='currentPage == page.no-1' ng-click='setPage(page.no)' ng-repeat='page in pages'>{{page.no}}</button>
+        	</div>
+		</div>
+	</div><br>
+</div>
+
