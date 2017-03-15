@@ -1,41 +1,22 @@
-app.controller('EditarController',  function($scope,$http,$location,$routeParams) {
+app.controller('EditarController',  function($scope,$http,$location,$routeParams,contactosService) {
 	$scope.ListaPrecios=[{id:1,nombre:'General'},];
 	//console.log("llego"+$routeParams.idContact);
 
 	$http.post('controller.php', { metodo : 'consultarContacto',contactoId:$routeParams.idContact}).then(function successCallback(response){
 		$scope.contacto=response.data;
-
-		//$scope.contacto.type.client=true;
-		for(var a=0; a<response.data.type.length; a++){
-			var tipo=response.data.type[a];
-			if(tipo=='provider')
-				$scope.contacto.type.provider=true;
-			if(tipo=='client')
-				$scope.contacto.type.client=true;
-		}
+		$scope.contacto.type=contactosService.convertipoArrayaObjeto(response.data.type);
 	});
+	
 	$scope.editarContacto=function(){
 		if($scope.editarContactoForm.$valid){
-			var tipo=[];
-			if(typeof($scope.contacto.type)!=="undefined"){
-				if($scope.contacto.type.client==true)
-					tipo.push("client");
-				if($scope.contacto.type.provider==true)
-					tipo.push("provider");
 
-				$scope.contacto.type=tipo;
-			}
+			$scope.contacto.type=contactosService.convertipoObjetoAarray($scope.contacto.type);
+			var tipo=$scope.contacto.type;
 
 			$http.post('controller.php', { metodo : 'editarContacto',contacto:$scope.contacto}).then(function successCallback(response){
 				alert("Contacto editado correctamente");
+				$scope.contacto.type=contactosService.convertipoArrayaObjeto(tipo);
 				
-				for(var a=0; a<tipo.length;a++){
-					if(tipo[a]=="client")
-						$scope.contacto.type.client=true;
-
-					if(tipo[a]=="provider")
-						$scope.contacto.type.provider=true;
-				}
 			});
 		}else
 			alert("El formulario no ha sido diligenciado correctamente");
@@ -45,3 +26,5 @@ app.controller('EditarController',  function($scope,$http,$location,$routeParams
 		$location.path('listar');
 	}
 });
+
+

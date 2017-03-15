@@ -1,4 +1,3 @@
-
 app.controller('TablaController',  function($scope,$http,$location) {
 
 		$scope.orden="name";

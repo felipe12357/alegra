@@ -1,23 +1,17 @@
-app.controller('detallesContactoController',  function($scope,$http,$location,$routeParams) {
+app.controller('detallesContactoController',  function($scope,$http,$location,$routeParams,contactosService) {
 	$scope.ListaPrecios=[{id:1,nombre:'General'},];
 	//console.log("llego"+$routeParams.idContact);
 
 	$http.post('controller.php', { metodo : 'consultarContacto',contactoId:$routeParams.idContact}).then(function successCallback(response){
 		$scope.contacto=response.data;
-				
-		for(var a=0; a<response.data.type.length; a++){
-			var tipo=response.data.type[a];
-			if(tipo=='provider')
-				$scope.contacto.type.provider=true;
-			if(tipo=='client')
-				$scope.contacto.type.client=true;
-		}
+		$scope.contacto.type=contactosService.convertipoArrayaObjeto(response.data.type);
+		//console.log($scope.contacto.type);
 	});
 	
-
 	$scope.regresar=function(){
 		$location.path('listar');
 	}
+	
 });
 
 app.filter('checkmark',function(){

@@ -7,7 +7,7 @@
 	curl_setopt_array($curl, array(
 	    CURLOPT_USERAGENT => 'Codular Sample cURL Request',
 	    CURLOPT_HTTPAUTH=>CURLAUTH_BASIC,
-	    CURLOPT_USERPWD=>'claveAlegra' //modificada para la publicacion
+	    CURLOPT_USERPWD=>'clavealegra' //clave modificada
 	));
 
 
